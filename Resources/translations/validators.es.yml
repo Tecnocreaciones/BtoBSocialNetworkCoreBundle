@@ -1,0 +1,3 @@
+btob:
+    validations:
+        you_must_be_over_age: Debe ser mayor de edad para unirse a esta red.

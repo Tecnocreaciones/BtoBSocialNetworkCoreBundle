@@ -1,0 +1,24 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Chat:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        from:
+            expose: true
+            groups: [api_chat]
+        to:
+            expose: true
+            groups: [api_chat]
+        message:
+            expose: true
+            groups: [api_list]
+        read:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]
+        readTime:
+            expose: true
+            groups: [api_list]

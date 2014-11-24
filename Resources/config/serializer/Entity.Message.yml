@@ -1,0 +1,39 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Message:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        message:
+            expose: true
+            groups: [api_list]
+        tag:
+            expose: true
+            groups: [api_list]
+        type:
+            expose: true
+            groups: [api_list]
+        value:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]
+        public:
+            expose: true
+            groups: [api_list]
+        likesCount:
+            expose: true
+            groups: [api_list]
+        comments:
+            expose: true
+            groups: [comments]
+        user:
+            expose: true
+            groups: [message,user]
+        album:
+            expose: true
+            groups: [api_list]
+        likes:
+            expose: true
+            groups: [likes]

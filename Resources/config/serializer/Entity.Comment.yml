@@ -1,0 +1,21 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Comment:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        byUser:
+            expose: true
+            groups: [api_list]
+        message:
+            expose: true
+            groups: [comment_details]
+        commentText:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]
+        likes:
+            expose: true
+            groups: [api_list]

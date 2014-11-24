@@ -1,0 +1,15 @@
+BtoB\SocialNetwork\CoreBundle\Entity\RewardComment:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        comment:
+            expose: true
+            groups: [api_list]
+        byUser:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]

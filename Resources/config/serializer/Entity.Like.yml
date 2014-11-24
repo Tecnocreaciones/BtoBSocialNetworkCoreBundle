@@ -1,0 +1,15 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Like:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        byUser:
+            expose: true
+            groups: [api_list]
+        message:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]

@@ -1,0 +1,21 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Message:
+    properties:
+        type:
+            - NotBlank: ~
+        public:
+            - NotBlank: ~
+            
+BtoB\SocialNetwork\CoreBundle\Entity\User:
+    getters:
+        validBorn:
+            - 'True': { message: "btob.validations.you_must_be_over_age" }
+            
+BtoB\SocialNetwork\CoreBundle\Entity\Chat:
+    properties:
+        message:
+            - NotBlank: ~
+            
+BtoB\SocialNetwork\CoreBundle\Entity\Relation:
+    properties:
+        status:
+            - NotBlank: ~

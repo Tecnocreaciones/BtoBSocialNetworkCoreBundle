@@ -1,0 +1,27 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Notification:
+    exclusion_policy: ALL
+    properties:
+        idu:
+            expose: true
+            groups: [id]
+        from:
+            expose: true
+            groups: [api_list]
+        to:
+            expose: true
+            groups: [api_list]
+        parent:
+            expose: true
+            groups: [api_list]
+        child:
+            expose: true
+            groups: [api_list]
+        type:
+            expose: true
+            groups: [api_list]
+        read:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]

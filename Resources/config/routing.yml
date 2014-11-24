@@ -1,0 +1,47 @@
+liip_imagine_filter_avatar:
+    path: /media/cache/avatar/{filter}/{path}
+    methods: [GET]
+    defaults:
+        _controller: liip_imagine.controller:filterAvatarAction
+    requirements:
+        filter: '[A-z0-9_\-]*'
+
+liip_imagine_filter_cover:
+    path: /media/cache/cover/{filter}/{path}
+    methods: [GET]
+    defaults:
+        _controller: liip_imagine.controller:filterCoverAction
+    requirements:
+        filter: '[A-z0-9_\-]*'
+        
+liip_imagine_filter_dynamic:
+    path: /media/cache/dynamic/{type}/{path}
+    methods: [GET]
+    defaults:
+        _controller: liip_imagine.controller:dynamicFilterAction
+    requirements:
+        filter: '[A-z0-9_\-]*'
+        type: avatars|covers|media
+        
+liip_imagine_filter_relative:
+    path: /media/cache/relative/{type}/{path}
+    methods: [GET]
+    defaults:
+        _controller: liip_imagine.controller:relativeFilterAction
+    requirements:
+        filter: '[A-z0-9_\-]*'
+        type: avatars|covers|media
+        
+btob_core_email_send_invitation:
+    path: /email/send/invitation.{_format}
+    methods: [GET]
+    defaults:
+        _controller: BtoBSocialNetworkCoreBundle:Email:sendInvitation
+        _format: json
+        
+btob_core_email_send_invitation_test:
+    path: /email/send/invitation-test.{_format}
+    methods: [GET]
+    defaults:
+        _controller: BtoBSocialNetworkCoreBundle:Email:sendInvitationTest
+        _format: json

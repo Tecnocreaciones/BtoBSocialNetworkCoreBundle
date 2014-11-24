@@ -1,0 +1,99 @@
+BtoB\SocialNetwork\CoreBundle\Entity\User:
+    exclusion_policy: ALL
+    properties:
+        idu:
+            expose: true
+            groups: [id]
+        firstName:
+            expose: true
+            groups: [api_list]
+        lastName:
+            expose: true
+            groups: [api_list]
+        born:
+            expose: true
+            groups: [profile]
+        gender:
+            expose: true
+            groups: [profile,api_list]
+        location:
+            expose: true
+            groups: [api_search,profile,api_list]
+        locationEstado:
+            expose: true
+            groups: [profile,api_list]
+        locationCiudad:
+            expose: true
+            groups: [profile,api_list]
+        website:
+            expose: true
+            groups: [profile,api_list]
+        codigoPostal:
+            expose: true
+            groups: [profile]
+        biography:
+            expose: true
+            groups: [profile,api_list]
+        facebook:
+            expose: true
+            groups: [profile]
+        twitter:
+            expose: true
+            groups: [profile]
+        gplus:
+            expose: true
+            groups: [profile]
+        libro:
+            expose: true
+            groups: [profile]
+        pelicula:
+            expose: true
+            groups: [profile]
+        private:
+            expose: true
+            groups: [profile]
+        privacy:
+            expose: true
+            groups: [profile]
+        offline:
+            expose: true
+            groups: [profile]
+        notificationReward:
+            expose: true
+            groups: [profile]
+        notificationComments:
+            expose: true
+            groups: [profile]
+        notificationMessageShared:
+            expose: true
+            groups: [profile]
+        notificationChat:
+            expose: true
+            groups: [profile]
+        notificationAddFriend:
+            expose: true
+            groups: [profile]
+        emailComment:
+            expose: true
+            groups: [profile]
+        emailReward:
+            expose: true
+            groups: [profile]
+        emailNewFriend:
+            expose: true
+            groups: [profile]
+        soundNewNotification:
+            expose: true
+            groups: [profile]
+        soundNewChat:
+            expose: true
+            groups: [profile]
+        subscribers:
+            expose: true
+            groups: [api_search]
+        leaders:
+            expose: true
+            groups: [api_search]
+        image:
+            expose: true
+            groups: [api_list]

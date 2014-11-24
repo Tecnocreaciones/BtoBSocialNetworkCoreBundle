@@ -1,0 +1,9 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Album:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        descripcion:
+            expose: true
+            groups: [api_list]

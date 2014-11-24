@@ -1,0 +1,18 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Relation:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        status:
+            expose: true
+            groups: [api_list]
+        time:
+            expose: true
+            groups: [api_list]
+        leader:
+            expose: true
+            groups: [api_relation]
+        subscriber:
+            expose: true
+            groups: [api_relation]

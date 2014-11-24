@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!--
+    <parameters>
+        <parameter key="btob_social_network_core.example.class">BtoB\SocialNetwork\CoreBundle\Example</parameter>
+    </parameters>
+
+    <services>
+        <service id="btob_social_network_core.example" class="%btob_social_network_core.example.class%">
+            <argument type="service" id="service_id" />
+            <argument>plain_value</argument>
+            <argument>%parameter_name%</argument>
+        </service>
+    </services>
+    -->
+    <parameters>
+        <parameter key="liip_imagine.controller.class">BtoB\SocialNetwork\CoreBundle\Controller\ImagineController</parameter>
+        <parameter key="liip_imagine.filter.configuration.class">BtoB\SocialNetwork\CoreBundle\Filter\ImageFilterConfiguration</parameter>
+    </parameters>
+    <services>
+        <service id="btob.mailer.twig_swift" class="BtoB\SocialNetwork\CoreBundle\Service\TwigSwiftMailer">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="twig" />
+        </service>
+        <service id="btob.mailer.twig_swift_memory" class="BtoB\SocialNetwork\CoreBundle\Service\TwigSwiftMailer">
+            <argument type="service" id="swiftmailer.mailer.second_mailer" />
+            <argument type="service" id="twig" />
+        </service>
+        <service id="btob.controller.email" class="BtoB\SocialNetwork\CoreBundle\Controller\EmailController">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="liip_imagine.controller" class="%liip_imagine.controller.class%">
+            <argument type="service" id="liip_imagine.data.manager" />
+            <argument type="service" id="liip_imagine.filter.manager" />
+            <argument type="service" id="liip_imagine.cache.manager" />
+            <argument type="service" id="liip_imagine.cache.signer" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="btob_encoder" class="BtoB\SocialNetwork\CoreBundle\Security\Encoder\BtoBEncoder"></service>
+        <service id="core.tools" class="BtoB\SocialNetwork\CoreBundle\Service\CommonCoreTools">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="btob.configuration" class="BtoB\SocialNetwork\CoreBundle\Service\Configuration">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="btob_core.registration.form.type" class="BtoB\SocialNetwork\CoreBundle\Form\Type\RegistrationFormType">
+            <tag name="form.type" alias="btob_core_user_registration" />
+            <argument>%fos_user.model.user.class%</argument>
+        </service>
+        <service id="repository.user" class="BtoB\SocialNetwork\CoreBundle\Repository\UserRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\User" />
+        </service>
+        <service id="repository.message" class="BtoB\SocialNetwork\CoreBundle\Repository\MessageRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Message" />
+        </service>
+        <service id="repository.like" class="BtoB\SocialNetwork\CoreBundle\Repository\LikeRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Like" />
+        </service>
+        <service id="repository.comment" class="BtoB\SocialNetwork\CoreBundle\Repository\CommentRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Comment" />
+        </service>
+        <service id="repository.relation" class="BtoB\SocialNetwork\CoreBundle\Repository\RelationRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Relation" />
+        </service>
+        <service id="repository.chat" class="BtoB\SocialNetwork\CoreBundle\Repository\ChatRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Chat" />
+        </service>
+        <service id="repository.notification" class="BtoB\SocialNetwork\CoreBundle\Repository\NotificationRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\Notification" />
+        </service>
+        <service id="repository.reward_comment" class="BtoB\SocialNetwork\CoreBundle\Repository\RewardCommentRepository">
+            <tag name="app.repository" class="BtoB\SocialNetwork\CoreBundle\Entity\RewardComment" />
+        </service>
+    </services>
+</container>

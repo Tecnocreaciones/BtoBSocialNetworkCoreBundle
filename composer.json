@@ -1,6 +1,6 @@
 {
     "name": "tecnocreaciones/btob-social-network-core-bundle",
-    "description": "Definicion de entidades de la aplicacion.",
+    "description": "Definicion del core de la aplicacion.",
     "type": "symfony-bundle",
     "require": {
         "doctrine/orm": "~2.2,>=2.2.3"

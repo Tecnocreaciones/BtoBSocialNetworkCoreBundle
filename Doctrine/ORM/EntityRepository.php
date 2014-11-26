@@ -13,7 +13,7 @@ use Doctrine\ORM\QueryBuilder;
  *
  * @author Carlos Mendoza <inhack20@tecnocreaciones.com>
  */
-class EntityRepository extends BaseEntityRepository implements ContainerAwareInterface 
+class EntityRepository extends BaseEntityRepository
 {
     protected $container;
     

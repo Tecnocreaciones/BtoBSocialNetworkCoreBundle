@@ -215,13 +215,18 @@ class MessageRepository extends EntityRepository
         if(($userName = $criteria->remove('username'))){
             $qb->andWhere($qb->expr()->like("m_u.username","'%".$userName."%'"));
         }
+        if(($user = $criteria->remove('user'))){
+            $qb->andWhere('m_u.id = :user')
+            ->setParameter('user', $user)
+            ;
+        }
         if(($dateStart = $criteria->remove('dateStart'))){
-            $qb->andWhere('m.time >= :dateStart')
+            $qb->andWhere('m.createdAt >= :dateStart')
             ->setParameter('dateStart', $dateStart)
             ;
         }
         if(($dateEnd = $criteria->remove('dateEnd'))){
-            $qb->andWhere('m.time <= :dateEnd')
+            $qb->andWhere('m.createdAt <= :dateEnd')
             ->setParameter('dateEnd', $dateEnd)
             ;
         }

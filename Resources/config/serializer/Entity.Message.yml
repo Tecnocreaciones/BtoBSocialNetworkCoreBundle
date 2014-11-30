@@ -34,6 +34,9 @@ BtoB\SocialNetwork\CoreBundle\Entity\Message:
         album:
             expose: true
             groups: [api_list]
+        createdAt:
+            expose: true
+            groups: [api_list]
         likes:
             expose: true
             groups: [likes]

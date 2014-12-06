@@ -112,12 +112,12 @@ class ImagineController extends BaseController implements \Symfony\Component\Dep
     public function dynamicFilterAction(Request $request,$type,$path)
     {
         $basePath = 'uploads/'.$type.'/';
-        $width = 50;
-        $heigth = 50;
+        $width = 100;
+        $heigth = 100;
         switch ($type):
             case 'avatars':
-                $width = 25;
-                $heigth = 25;
+                $width = 100;
+                $heigth = 100;
                 break;
             case 'covers':
                 $width = 900;
@@ -128,10 +128,10 @@ class ImagineController extends BaseController implements \Symfony\Component\Dep
         endswitch;
         
         if($request->query->has('w')){
-            $width = $request->get('w',50);
+            $width = $request->get('w',100);
         }
         if($request->query->has('h')){
-            $heigth = $request->get('h',50);
+            $heigth = $request->get('h',100);
         }
         $path = $basePath.$path;
         $filter = 'dynamic'.'_'.$width.'x'.$heigth;

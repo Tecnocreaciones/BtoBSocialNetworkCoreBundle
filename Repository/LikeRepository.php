@@ -58,6 +58,39 @@ class LikeRepository extends EntityRepository
         return $this->getPaginator($qb);
     }
     
+    function findRewardsByMessage(array $criteria = array(),array $sorting) {
+        $qb = $this->getQueryBuilder();
+        $qb
+                ->select("l")
+                ->addSelect("m")
+                ->addSelect("u")
+                ->innerJoin("l.message", 'm')
+                ->innerJoin('l.byUser', 'u')
+                ->orderBy('l.id','DESC')
+                ;
+        $criteria = new \Doctrine\Common\Collections\ArrayCollection($criteria);
+        if(($userName = $criteria->remove('username'))){
+            $qb->andWhere($qb->expr()->like("u.username","'%".$userName."%'"));
+        }
+        if(($dateStart = $criteria->remove('dateStart'))){
+            $qb->andWhere('l.time >= :dateStart')
+            ->setParameter('dateStart', $dateStart)
+            ;
+        }
+        if(($dateEnd = $criteria->remove('dateEnd'))){
+            $qb->andWhere('l.time <= :dateEnd')
+            ->setParameter('dateEnd', $dateEnd)
+            ;
+        }
+        if(($message = $criteria->remove('message'))){
+            $qb->andWhere('m.id = :message')
+            ->setParameter('message', $message)
+            ;
+        }
+        $this->applySorting($qb,$sorting);
+        return $this->getPaginator($qb);
+    }
+    
     protected function getAlias() {
         return 'l';
     }

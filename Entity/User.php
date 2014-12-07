@@ -347,6 +347,52 @@ class User extends BaseUser
      * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\ResourceCDN",cascade={"persist","remove"})
      */
     private $coverResourceCDN;
+    
+    /**
+     * Porcentaje del perfil completo
+     * @var string
+     * @ORM\Column(name="percentage_complete",type="float")
+     */
+    private $percentageComplete;
+    
+    /**
+     * Tipo de cuenta
+     * 
+     * @var string
+     * @ORM\Column(name="type_charge",type="string",length=50)
+     */
+    private $typeCharge;
+    
+    /**
+     * Cuenta de paypal
+     * 
+     * @var string
+     * @ORM\Column(name="paypal_account",type="string",length=100)
+     */
+    private $paypalAccount;
+    
+    /**
+     * Nombre a emitir el cheque
+     * 
+     * @var string
+     * @ORM\Column(name="name_check",type="string",length=100)
+     */
+    private $nameCheck;
+    
+    /**
+     * Direccion a emitir el cheque
+     * 
+     * @var string
+     * @ORM\Column(name="direction_check",type="text")
+     */
+    private $directionCheck;
+    
+    /**
+     * Zona horario
+     * @var string
+     * @ORM\Column(name="timezone",type="string",length=64)
+     */
+    private $timezone;
 
     public function __construct() {
         parent::__construct();
@@ -1459,5 +1505,143 @@ class User extends BaseUser
             $fullname = $this->username;
         }
         return $fullname;
+    }
+
+    /**
+     * Set percentageComplete
+     *
+     * @param float $percentageComplete
+     * @return User
+     */
+    public function setPercentageComplete($percentageComplete)
+    {
+        $this->percentageComplete = $percentageComplete;
+
+        return $this;
+    }
+
+    /**
+     * Get percentageComplete
+     *
+     * @return float 
+     */
+    public function getPercentageComplete()
+    {
+        return $this->percentageComplete;
+    }
+
+    /**
+     * Set timezone
+     *
+     * @param string $timezone
+     * @return User
+     */
+    public function setTimezone($timezone)
+    {
+        $this->timezone = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Get timezone
+     *
+     * @return string 
+     */
+    public function getTimezone()
+    {
+        return $this->timezone;
+    }
+
+    /**
+     * Set typeCharge
+     *
+     * @param string $typeCharge
+     * @return User
+     */
+    public function setTypeCharge($typeCharge)
+    {
+        $this->typeCharge = $typeCharge;
+
+        return $this;
+    }
+
+    /**
+     * Get typeCharge
+     *
+     * @return string 
+     */
+    public function getTypeCharge()
+    {
+        return $this->typeCharge;
+    }
+
+    /**
+     * Set paypalAccount
+     *
+     * @param string $paypalAccount
+     * @return User
+     */
+    public function setPaypalAccount($paypalAccount)
+    {
+        $this->paypalAccount = $paypalAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get paypalAccount
+     *
+     * @return string 
+     */
+    public function getPaypalAccount()
+    {
+        return $this->paypalAccount;
+    }
+
+    /**
+     * Set nameCheck
+     *
+     * @param string $nameCheck
+     * @return User
+     */
+    public function setNameCheck($nameCheck)
+    {
+        $this->nameCheck = $nameCheck;
+
+        return $this;
+    }
+
+    /**
+     * Get nameCheck
+     *
+     * @return string 
+     */
+    public function getNameCheck()
+    {
+        return $this->nameCheck;
+    }
+
+    /**
+     * Set directionCheck
+     *
+     * @param string $directionCheck
+     * @return User
+     */
+    public function setDirectionCheck($directionCheck)
+    {
+        $this->directionCheck = $directionCheck;
+
+        return $this;
+    }
+
+    /**
+     * Get directionCheck
+     *
+     * @return string 
+     */
+    public function getDirectionCheck()
+    {
+        return $this->directionCheck;
     }
 }

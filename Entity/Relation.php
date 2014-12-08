@@ -69,7 +69,7 @@ class Relation
      * @var integer
      * @ORM\Column(name="status", type="integer", options={"default" = 0})
      */
-    private $status = self::STATUS_UNCONFIRMED;
+    private $status = self::STATUS_CONFIRMED;
 
     /**
      * Get id

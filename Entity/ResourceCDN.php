@@ -40,7 +40,7 @@ class ResourceCDN extends Base
      * @var string
      * @ORM\Column(name="name",type="string",length=250)
      */
-    private $name;
+    protected $name;
     
     /**
      * Datos del cdn
@@ -134,16 +134,6 @@ class ResourceCDN extends Base
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

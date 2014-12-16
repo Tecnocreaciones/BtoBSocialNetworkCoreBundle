@@ -46,19 +46,22 @@ abstract class ResourceCDN
         return $name;
     }
     
-    function getThumb()
+    function getThumb($parameters = array())
     {
-        $parameters = array(
+        $parametersDef = array_merge(array(
             'width' => 60,
             "height" => 60,
             "crop" => "thumb",
             'radius' => 6
-        );
-        return cloudinary_url($this->getNameFile(),$parameters);
+        ),$parameters);
+        return cloudinary_url($this->getNameFile(),$parametersDef);
     }
     
     function getAvatar()
     {
-        
+         $parameters = array(
+            'radius' => 0
+        );
+        return $this->getThumb($parameters);
     }
 }

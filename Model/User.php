@@ -18,7 +18,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @author Carlos Mendoza <inhack20@tecnocreaciones.com>
  */
-abstract class User 
+abstract class User extends BaseUser
 {
     protected $percentageComplete;
     

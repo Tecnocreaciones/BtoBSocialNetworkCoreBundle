@@ -57,6 +57,17 @@ abstract class ResourceCDN
         return cloudinary_url($this->getNameFile(),$parametersDef);
     }
     
+    function getCover($parameters = array())
+    {
+        $parametersDef = array_merge(array(
+            'width' => 900,
+            "height" => 300,
+            "crop" => "thumb",
+            'radius' => 6
+        ),$parameters);
+        return cloudinary_url($this->getNameFile(),$parametersDef);
+    }
+    
     function getAvatar()
     {
          $parameters = array(

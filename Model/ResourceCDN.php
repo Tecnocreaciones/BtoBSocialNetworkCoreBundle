@@ -25,4 +25,54 @@ abstract class ResourceCDN
     function getUrl() {
         return $this->data['url'];
     }
+    
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    function getNameFile() {
+        $name = $this->getUrl();
+        $nameExplode = explode('/', $name);
+        $nameCount = count($nameExplode);
+        if($nameCount > 0){
+            $name = $nameExplode[$nameCount - 1];
+        }
+        return $name;
+    }
+    
+    function getThumb($parameters = array())
+    {
+        $parametersDef = array_merge(array(
+            'width' => 60,
+            "height" => 60,
+            "crop" => "thumb",
+            'radius' => 6
+        ),$parameters);
+        return cloudinary_url($this->getNameFile(),$parametersDef);
+    }
+    
+    function getCover($parameters = array())
+    {
+        $parametersDef = array_merge(array(
+            'width' => 900,
+            "height" => 300,
+            "crop" => "thumb",
+            'radius' => 6
+        ),$parameters);
+        return cloudinary_url($this->getNameFile(),$parametersDef);
+    }
+    
+    function getAvatar()
+    {
+         $parameters = array(
+            'radius' => 0
+        );
+        return $this->getThumb($parameters);
+    }
 }

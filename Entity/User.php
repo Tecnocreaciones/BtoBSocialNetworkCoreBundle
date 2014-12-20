@@ -2,7 +2,7 @@
 
 namespace BtoB\SocialNetwork\CoreBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use BtoB\SocialNetwork\CoreBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -353,7 +353,7 @@ class User extends BaseUser
      * @var string
      * @ORM\Column(name="percentage_complete",type="float")
      */
-    private $percentageComplete;
+    protected $percentageComplete;
     
     /**
      * Tipo de cuenta

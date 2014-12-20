@@ -12,6 +12,21 @@ use BtoB\SocialNetwork\CoreBundle\Doctrine\ORM\EntityRepository;
  */
 class MessageRepository extends EntityRepository
 {
+    function findPreHidrate($id)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb
+            ->addSelect('m_u')
+            ->addSelect('m_u_prcdn')
+            ->addSelect('m_u_crcdn')
+            ->innerJoin('m.user', 'm_u')
+            ->leftJoin('m_u.profileResourceCDN', 'm_u_prcdn')
+            ->leftJoin('m_u.coverResourceCDN', 'm_u_crcdn')
+            ->andWhere('m.id = :message')
+            ->setParameter('message', $id)
+            ;
+        return $qb->getQuery()->getOneOrNullResult();
+    }
     public function getMessagesByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
     {
         $qb = $this->createQueryBuilder('m');

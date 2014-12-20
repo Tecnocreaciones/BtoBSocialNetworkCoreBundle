@@ -12,6 +12,19 @@ use BtoB\SocialNetwork\CoreBundle\Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    function findPreHidrate($id) 
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb
+            ->addSelect('u_prcdn')
+            ->leftJoin('u.profileResourceCDN', 'u_prcdn')
+            ->leftJoin('u.coverResourceCDN', 'u_crcdn')
+            ->andWhere('u.id = :user')
+            ->setParameter('user', $id)
+            ;
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+    
     /**
      * Busca un usuario con informacion extra
      * @param type $leaderId

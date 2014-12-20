@@ -29,8 +29,9 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
      * @return type
      */
     public function uploadFiles(array $files,$type) {
+        
         $value = '';
-        $path = __DIR__.'/../../../../../web/uploads/';
+        $path = $this->container->getParameter('kernel.root_dir').'/../web/uploads/';
         
         if($type == \BtoB\SocialNetwork\CoreBundle\Entity\Message::TYPE_PICTURE){
             $subPath = 'media/';

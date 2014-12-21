@@ -113,8 +113,8 @@ class UserRepository extends EntityRepository
         
         $qb = $this->createQueryBuilder('u');
         $qb
-//            ->leftJoin('u.leaders', 'l', \Doctrine\ORM\Query\Expr\Join::WITH,'(l.status = :status)','l.id')
-//            ->leftJoin('u.subscribers', 's', \Doctrine\ORM\Query\Expr\Join::WITH,'(s.status = :status)','s.id')
+            ->leftJoin('u.leaders', 'l')
+            ->leftJoin('u.subscribers', 's')
             ->andWhere(
                 $qb->expr()->orX('l.leader = :user','l.subscriber = :user','s.leader = :user','s.subscriber = :user')
             )

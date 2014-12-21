@@ -425,6 +425,13 @@ class User extends BaseUser
      * @ORM\Column(name="id_titular_bank_account",type="string",length=100,nullable=true)
      */
     private $idTitularBankAccount;
+    
+    /**
+     *
+     * @var \DateTest
+     * @ORM\Column(name="lastDateChatOnLine",type="datetime")
+     */
+    private $lastDateChatOnLine;
 
     public function __construct() {
         parent::__construct();
@@ -1675,5 +1682,120 @@ class User extends BaseUser
     public function getDirectionCheck()
     {
         return $this->directionCheck;
+    }
+
+    /**
+     * Set numberBankAccount
+     *
+     * @param string $numberBankAccount
+     * @return User
+     */
+    public function setNumberBankAccount($numberBankAccount)
+    {
+        $this->numberBankAccount = $numberBankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBankAccount
+     *
+     * @return string 
+     */
+    public function getNumberBankAccount()
+    {
+        return $this->numberBankAccount;
+    }
+
+    /**
+     * Set bankNameBankAccount
+     *
+     * @param string $bankNameBankAccount
+     * @return User
+     */
+    public function setBankNameBankAccount($bankNameBankAccount)
+    {
+        $this->bankNameBankAccount = $bankNameBankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get bankNameBankAccount
+     *
+     * @return string 
+     */
+    public function getBankNameBankAccount()
+    {
+        return $this->bankNameBankAccount;
+    }
+
+    /**
+     * Set nameTitularBankAccount
+     *
+     * @param string $nameTitularBankAccount
+     * @return User
+     */
+    public function setNameTitularBankAccount($nameTitularBankAccount)
+    {
+        $this->nameTitularBankAccount = $nameTitularBankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get nameTitularBankAccount
+     *
+     * @return string 
+     */
+    public function getNameTitularBankAccount()
+    {
+        return $this->nameTitularBankAccount;
+    }
+
+    /**
+     * Set idTitularBankAccount
+     *
+     * @param string $idTitularBankAccount
+     * @return User
+     */
+    public function setIdTitularBankAccount($idTitularBankAccount)
+    {
+        $this->idTitularBankAccount = $idTitularBankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get idTitularBankAccount
+     *
+     * @return string 
+     */
+    public function getIdTitularBankAccount()
+    {
+        return $this->idTitularBankAccount;
+    }
+
+    /**
+     * Set lastDateChatOnLine
+     *
+     * @param \DateTime $lastDateChatOnLine
+     * @return User
+     */
+    public function setLastDateChatOnLine($lastDateChatOnLine)
+    {
+        $this->lastDateChatOnLine = $lastDateChatOnLine;
+
+        return $this;
+    }
+
+    /**
+     * Get lastDateChatOnLine
+     *
+     * @return \DateTime 
+     */
+    public function getLastDateChatOnLine()
+    {
+        return $this->lastDateChatOnLine;
     }
 }

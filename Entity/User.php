@@ -351,15 +351,15 @@ class User extends BaseUser
     /**
      * Porcentaje del perfil completo
      * @var string
-     * @ORM\Column(name="percentage_complete",type="float")
+     * @ORM\Column(name="percentage_complete",type="float",nullable=true)
      */
-    protected $percentageComplete;
+    protected $percentageComplete = 0;
     
     /**
      * Tipo de cuenta
      * 
      * @var string
-     * @ORM\Column(name="type_charge",type="string",length=50)
+     * @ORM\Column(name="type_charge",type="string",length=50,nullable=true)
      */
     private $typeCharge;
     
@@ -367,7 +367,7 @@ class User extends BaseUser
      * Cuenta de paypal
      * 
      * @var string
-     * @ORM\Column(name="paypal_account",type="string",length=100)
+     * @ORM\Column(name="paypal_account",type="string",length=100,nullable=true)
      */
     private $paypalAccount;
     
@@ -375,7 +375,7 @@ class User extends BaseUser
      * Nombre a emitir el cheque
      * 
      * @var string
-     * @ORM\Column(name="name_check",type="string",length=100)
+     * @ORM\Column(name="name_check",type="string",length=100,nullable=true)
      */
     private $nameCheck;
     
@@ -383,16 +383,48 @@ class User extends BaseUser
      * Direccion a emitir el cheque
      * 
      * @var string
-     * @ORM\Column(name="direction_check",type="text")
+     * @ORM\Column(name="direction_check",type="text",nullable=true)
      */
     private $directionCheck;
     
     /**
      * Zona horario
      * @var string
-     * @ORM\Column(name="timezone",type="string",length=64)
+     * @ORM\Column(name="timezone",type="string",length=64,nullable=true)
      */
     private $timezone;
+    
+    /**
+     * Cuenta del banco
+     * 
+     * @var string
+     * @ORM\Column(name="number_bank_account",type="string",length=30,nullable=true)
+     */
+    private $numberBankAccount;
+    
+    /**
+     * Nombre del banco
+     * 
+     * @var string
+     * @ORM\Column(name="bank_name_bank_account",type="string",length=100,nullable=true)
+     */
+    private $bankNameBankAccount;
+    
+    /**
+     * Nombre del titular de la cuenta del banco
+     * 
+     * @var string
+     * @ORM\Column(name="name_titular_bank_account",type="string",length=100,nullable=true)
+     */
+    private $nameTitularBankAccount;
+    
+    /**
+     * Id del titula de la cuenta del banco
+     * 
+     * @var string
+     * @ORM\Column(name="id_titular_bank_account",type="string",length=100,nullable=true)
+     */
+    private $idTitularBankAccount;
 
     public function __construct() {
         parent::__construct();

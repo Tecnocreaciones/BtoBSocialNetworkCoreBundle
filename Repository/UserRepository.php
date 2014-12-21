@@ -98,4 +98,31 @@ class UserRepository extends EntityRepository
             ;
         return $this->getPaginator($qb);
     }
+    
+    /**
+     * Retorna los amigos conectados al chat en los ultimos 10 minutos
+     * @param \BtoB\SocialNetwork\CoreBundle\Entity\User $user
+     * @param type $query
+     * @return type
+     */
+    public function getLastUserChatOnLine(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,$query)
+    {
+        $date = new  \DateTime();
+        $date->modify('-10 minutes');
+        
+        $qb = $this->createQueryBuilder('u');
+        $qb
+//            ->leftJoin('u.leaders', 'l', \Doctrine\ORM\Query\Expr\Join::WITH,'(l.status = :status)','l.id')
+//            ->leftJoin('u.subscribers', 's', \Doctrine\ORM\Query\Expr\Join::WITH,'(s.status = :status)','s.id')
+            ->andWhere(
+                $qb->expr()->orX('l.leader = :user','l.subscriber = :user','s.leader = :user','s.subscriber = :user')
+            )
+            ->andWhere('u.lastDateChatOnLine >= :lastDateChatOnLine')
+            ->andWhere('u.id != :user')
+//            ->setParameter('status', \BtoB\SocialNetwork\CoreBundle\Entity\Relation::STATUS_CONFIRMED)
+            ->setParameter('user', $user)
+            ->setParameter('lastDateChatOnLine',$date)
+            ;
+        return $qb->getQuery()->getResult();
+    }
 }

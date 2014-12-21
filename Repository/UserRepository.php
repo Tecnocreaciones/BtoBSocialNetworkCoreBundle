@@ -105,7 +105,7 @@ class UserRepository extends EntityRepository
      * @param type $query
      * @return type
      */
-    public function getLastUserChatOnLine(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,$query)
+    public function getLastUserChatOnLine(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
     {
         $date = new  \DateTime();
         $date->modify('-10 minutes');

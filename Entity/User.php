@@ -429,7 +429,7 @@ class User extends BaseUser
     /**
      *
      * @var \DateTest
-     * @ORM\Column(name="lastDateChatOnLine",type="datetime")
+     * @ORM\Column(name="lastDateChatOnLine",type="datetime",nullable=true)
      */
     private $lastDateChatOnLine;
 

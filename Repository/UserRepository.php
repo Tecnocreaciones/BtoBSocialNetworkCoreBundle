@@ -101,11 +101,12 @@ class UserRepository extends EntityRepository
     
     /**
      * Retorna los amigos conectados al chat en los ultimos 10 minutos
+     * 
      * @param \BtoB\SocialNetwork\CoreBundle\Entity\User $user
      * @param type $query
      * @return type
      */
-    public function getLastUserChatOnLine(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
+    public function getLastUsersChatOnLine(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
     {
         $date = new  \DateTime();
         $date->modify('-10 minutes');

@@ -134,7 +134,7 @@ class MessageRepository extends EntityRepository
         return $this->getPaginator($qb);
     }
     
-    function findRewardsByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,array $criteria = array(),array $sorting) {
+    function findRewardsByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,array $criteria = array(),array $sorting = array()) {
         $qb = $this->getQueryBuilder();
         $qb
                 ->select("m as message")
@@ -246,7 +246,7 @@ class MessageRepository extends EntityRepository
             ;
         }
         
-        $qb->setMaxResults(200);
+        $qb->setMaxResults(100);
         $results = $qb->getQuery()->getResult();
         $messagesId = array();
         foreach ($results as $result) {

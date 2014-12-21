@@ -434,7 +434,6 @@ class User extends BaseUser
     private $lastDateChatOnLine;
 
     public function __construct() {
-        parent::__construct();
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subscribers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->leaders = new \Doctrine\Common\Collections\ArrayCollection();

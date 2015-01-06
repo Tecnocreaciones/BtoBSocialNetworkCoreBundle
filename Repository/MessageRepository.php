@@ -214,14 +214,15 @@ class MessageRepository extends EntityRepository
                 ->select("m as message")
 //                ->addSelect("l")
                 ->addSelect('m.likesCount countRewards')
+                ->addSelect('m_u')
 //                ->innerJoin("m.likes", 'l')
                 ->innerJoin("m.user", 'm_u')
 //                ->innerJoin('l.byUser', 'u')
 //                ->andWhere('u.id != :user')
                 ->addGroupBy('m.id')
                 ->addGroupBy('m_u.id')
-                ->addOrderBy('m_u.id','DESC')
                 ->addOrderBy('countRewards','DESC')
+                ->addOrderBy('m.createdAt','DESC')
                 ->andHaving('countRewards > 0')
                 ;
         

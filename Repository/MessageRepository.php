@@ -154,12 +154,12 @@ class MessageRepository extends EntityRepository
             $qb->andWhere($qb->expr()->like("u.username","'%".$userName."%'"));
         }
         if(($dateStart = $criteria->remove('dateStart'))){
-            $qb->andWhere('l.time >= :dateStart')
+            $qb->andWhere('l.createdAt >= :dateStart')
             ->setParameter('dateStart', $dateStart)
             ;
         }
         if(($dateEnd = $criteria->remove('dateEnd'))){
-            $qb->andWhere('l.time <= :dateEnd')
+            $qb->andWhere('l.createdAt <= :dateEnd')
             ->setParameter('dateEnd', $dateEnd)
             ;
         }
@@ -174,7 +174,7 @@ class MessageRepository extends EntityRepository
         $qb = $this->getQueryBuilder();
         $qb
                 ->select("m as message")
-                ->addSelect($qb->expr()->substring('m.time',1,10).' datePost')
+                ->addSelect($qb->expr()->substring('m.createdAt',1,10).' datePost')
                 ->andWhere('m.user = :user')
 //                ->andWhere('u.id != :user')
 //                ->groupBy('m.id')
@@ -188,12 +188,12 @@ class MessageRepository extends EntityRepository
             $qb->andWhere($qb->expr()->like("u.username","'%".$userName."%'"));
         }
         if(($dateStart = $criteria->remove('dateStart'))){
-            $qb->andWhere('m.time >= :dateStart')
+            $qb->andWhere('m.createdAt >= :dateStart')
             ->setParameter('dateStart', $dateStart)
             ;
         }
         if(($dateEnd = $criteria->remove('dateEnd'))){
-            $qb->andWhere('m.time <= :dateEnd')
+            $qb->andWhere('m.createdAt <= :dateEnd')
             ->setParameter('dateEnd', $dateEnd)
             ;
         }
@@ -283,7 +283,7 @@ class MessageRepository extends EntityRepository
                 ->groupBy('m.id')
                 ->setParameter('user', $user)
                 ->orderBy('countRewards','DESC')
-                ->addOrderBy('m.time','DESC')
+                ->addOrderBy('m.createdAt','DESC')
                 ->setMaxResults(1)
                 ;
         $sorting = new \Doctrine\Common\Collections\ArrayCollection($sorting);
@@ -292,12 +292,12 @@ class MessageRepository extends EntityRepository
             $qb->andWhere($qb->expr()->like("u.username","'%".$userName."%'"));
         }
         if(($dateStart = $criteria->remove('dateStart'))){
-            $qb->andWhere('l.time >= :dateStart')
+            $qb->andWhere('l.createdAt >= :dateStart')
             ->setParameter('dateStart', $dateStart)
             ;
         }
         if(($dateEnd = $criteria->remove('dateEnd'))){
-            $qb->andWhere('l.time <= :dateEnd')
+            $qb->andWhere('l.createdAt <= :dateEnd')
             ->setParameter('dateEnd', $dateEnd)
             ;
         }

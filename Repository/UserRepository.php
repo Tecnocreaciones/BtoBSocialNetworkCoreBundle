@@ -63,6 +63,7 @@ class UserRepository extends EntityRepository
             ->andWhere(
                     $qb->expr()->orX(
                             $qb->expr()->like('u.username', "'%".$query."%'"),
+                            $qb->expr()->like('u.email', "'%".$query."%'"),
                             $qb->expr()->like('u.firstName',"'%".$query."%'"),
                             $qb->expr()->like('u.lastName', "'%".$query."%'")
                             )
@@ -89,6 +90,7 @@ class UserRepository extends EntityRepository
             ->andWhere(
                     $qb->expr()->orX(
                             $qb->expr()->like('u.username', "'%".$query."%'"),
+                            $qb->expr()->like('u.email', "'%".$query."%'"),
                             $qb->expr()->like('u.firstName',"'%".$query."%'"),
                             $qb->expr()->like('u.lastName', "'%".$query."%'")
                             )

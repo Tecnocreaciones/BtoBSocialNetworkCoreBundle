@@ -67,9 +67,11 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
         return date("d",(mktime(0,0,0,$elMes+1,1,$elAnio)-1));
     }
     
-    public static function getDateMonthStart($month = null)
+    public static function getDateMonthStart($month = null,$dateStart = null)
     {
-        $dateStart = new \DateTime();
+        if($dateStart === null){
+            $dateStart = new \DateTime();
+        }
         if($month === null){
             $month = $dateStart->format('m');
         }
@@ -77,9 +79,11 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
         $dateStart->setTime(0, 0, 0);
         return $dateStart;
     }
-    public static function getDateMonthEnd($month = null)
+    public static function getDateMonthEnd($month = null,$dateEnd = null)
     {
-        $dateEnd = new \DateTime();
+        if($dateEnd === null){
+            $dateEnd = new \DateTime();
+        }
         $anio = $dateEnd->format('Y');
         if($month === null){
             $month = $dateEnd->format('m');

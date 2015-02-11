@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Carlos Mendoza <inhack20@tecnocreaciones.com>
  * @ORM\Table(name="publication_winner",uniqueConstraints={@ORM\UniqueConstraint(name="top_idx", columns={"idu","topDay_id"})})
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="BtoB\SocialNetwork\CoreBundle\Repository\PublicationWinnerRepository")
  */
 class PublicationWinner
 {

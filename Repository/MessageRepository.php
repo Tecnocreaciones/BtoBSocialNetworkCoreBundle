@@ -271,7 +271,14 @@ class MessageRepository extends EntityRepository
         return $this->getPaginator($qb);
     }
     
-    function findMaxRewardByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,array $criteria = array(),array $sorting) {
+    /**
+     * Retorna el post con mas rewards del mes
+     * @param \BtoB\SocialNetwork\CoreBundle\Entity\User $user
+     * @param array $criteria
+     * @param array $sorting
+     * @return type
+     */
+    function findMaxRewardByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,array $criteria = array(),array $sorting = array()) {
         $qb = $this->getQueryBuilder();
         $qb
                 ->select("m as message")
@@ -292,12 +299,12 @@ class MessageRepository extends EntityRepository
             $qb->andWhere($qb->expr()->like("u.username","'%".$userName."%'"));
         }
         if(($dateStart = $criteria->remove('dateStart'))){
-            $qb->andWhere('l.createdAt >= :dateStart')
+            $qb->andWhere('l.time >= :dateStart')
             ->setParameter('dateStart', $dateStart)
             ;
         }
         if(($dateEnd = $criteria->remove('dateEnd'))){
-            $qb->andWhere('l.createdAt <= :dateEnd')
+            $qb->andWhere('l.time <= :dateEnd')
             ->setParameter('dateEnd', $dateEnd)
             ;
         }

@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Carlos Mendoza <inhack20@tecnocreaciones.com>
  * @ORM\Table(name="top_day",uniqueConstraints={@ORM\UniqueConstraint(name="top_idx", columns={"dateTop"})})
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="BtoB\SocialNetwork\CoreBundle\Repository\TopDayRepository")
  */
 class TopDay 
 {
@@ -48,7 +48,7 @@ class TopDay
     /**
      *
      * @var PublicationWinner
-     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\PublicationWinner",mappedBy="topDay",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\PublicationWinner",mappedBy="topDay",cascade={"persist","remove"})
      */
     private $publicationsWinner;
     

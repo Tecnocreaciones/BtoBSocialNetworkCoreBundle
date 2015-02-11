@@ -128,4 +128,32 @@ class UserRepository extends EntityRepository
             ;
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * Retorna los usuarios invitados por 
+     * @param \BtoB\SocialNetwork\CoreBundle\Repository\BtoB\SocialNetwork\CoreBundle\Entity\User $user
+     * @param type $criteria
+     * @return type
+     */
+    public function findUserInvitedBy(\BtoB\SocialNetwork\CoreBundle\Entity\User $user,$criteria = array())
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb
+            ->andWhere('u.referredBy = :user')
+            ->setParameter('user', $user)
+            ;
+        if(isset($criteria['dateStart'])){
+            $qb
+                ->andWhere('u.date >= :dateStart')
+                ->setParameter('dateStart', $criteria['dateStart'])
+                ;
+        }
+        if(isset($criteria['dateStartEnd'])){
+            $qb
+                ->andWhere('u.date <= :dateStartEnd')
+                ->setParameter('dateStartEnd', $criteria['dateStartEnd'])
+                ;
+        }
+        return $qb->getQuery()->getResult();
+    }
 }

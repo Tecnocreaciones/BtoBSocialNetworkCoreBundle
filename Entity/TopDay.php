@@ -48,7 +48,7 @@ class TopDay
     /**
      *
      * @var PublicationWinner
-     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\PublicationWinner",mappedBy="topDay",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\PublicationWinner",mappedBy="topDay",cascade={"persist","remove"})
      */
     private $publicationsWinner;
     

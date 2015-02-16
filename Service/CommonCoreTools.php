@@ -71,6 +71,8 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
     {
         if($dateStart === null){
             $dateStart = new \DateTime();
+        }else{
+            $dateStart = clone($dateStart);
         }
         if($month === null){
             $month = $dateStart->format('m');
@@ -83,6 +85,8 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
     {
         if($dateEnd === null){
             $dateEnd = new \DateTime();
+        }else{
+            $dateEnd = clone($dateEnd);
         }
         $anio = $dateEnd->format('Y');
         if($month === null){
@@ -130,6 +134,25 @@ class CommonCoreTools implements \Symfony\Component\DependencyInjection\Containe
     public function cdnDelete(\BtoB\SocialNetwork\CoreBundle\Entity\ResourceCDN $resourceCDN) {
         $this->initCdn();
         \Cloudinary\Uploader::destroy($resourceCDN->getName());
+    }
+    
+    public static function getTranslateMonth($date)
+    {
+        $mes=$date->format('F');
+
+        if ($mes=="January") $mes="Enero";
+        if ($mes=="February") $mes="Febrero";
+        if ($mes=="March") $mes="Marzo";
+        if ($mes=="April") $mes="Abril";
+        if ($mes=="May") $mes="Mayo";
+        if ($mes=="June") $mes="Junio";
+        if ($mes=="July") $mes="Julio";
+        if ($mes=="August") $mes="Agosto";
+        if ($mes=="September") $mes="Setiembre";
+        if ($mes=="October") $mes="Octubre";
+        if ($mes=="November") $mes="Noviembre";
+        if ($mes=="December") $mes="Diciembre";
+        return $mes;
     }
 
 }

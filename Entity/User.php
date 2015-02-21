@@ -1816,20 +1816,4 @@ class User extends BaseUser
     {
         return $this->lastDateChatOnLine;
     }
-    
-    function getLocked() {
-        return $this->locked;
-    }
-
-    function getLastLogin() {
-        return $this->lastLogin;
-    }
-
-    function setLocked($locked) {
-        $this->locked = $locked;
-    }
-
-    function setLastLogin($lastLogin) {
-        $this->lastLogin = $lastLogin;
-    }
 }

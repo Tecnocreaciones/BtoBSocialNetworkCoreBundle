@@ -439,6 +439,18 @@ class User extends BaseUser
      * @ORM\Column(name="lastDateChatOnLine",type="datetime",nullable=true)
      */
     private $lastDateChatOnLine;
+    
+    /**
+     * @var boolean
+     * @ORM\Column(name="locked",type="boolean")
+     */
+    protected $locked = false;
+    
+    /**
+     * @var boolean
+     * @ORM\Column(name="last_login",type="datetime")
+     */
+    protected $lastLogin;
 
     public function __construct() {
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1803,5 +1815,21 @@ class User extends BaseUser
     public function getLastDateChatOnLine()
     {
         return $this->lastDateChatOnLine;
+    }
+    
+    function getLocked() {
+        return $this->locked;
+    }
+
+    function getLastLogin() {
+        return $this->lastLogin;
+    }
+
+    function setLocked($locked) {
+        $this->locked = $locked;
+    }
+
+    function setLastLogin($lastLogin) {
+        $this->lastLogin = $lastLogin;
     }
 }

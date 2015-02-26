@@ -85,6 +85,7 @@ class ChatRepository extends EntityRepository
                 ->select('c,f,t')
                 ->innerJoin('c.from','f')
                 ->innerJoin('c.to','t')
+                ->innerJoin('c.chatHistorys','c_h',  \Doctrine\ORM\Query\Expr\Join::WITH,'c.id = c_h.chat AND c_h.userOwner = :user')
                 ->where(
                         $qb->expr()->orX(
                                 $qb->expr()->andX('c.from = :user','c.to = :friend'),

@@ -25,7 +25,7 @@ class User extends BaseUser
     
     /**
      * @var string
-     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     * ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     protected $email;
     
@@ -442,13 +442,13 @@ class User extends BaseUser
     
     /**
      * @var boolean
-     * @ORM\Column(name="locked",type="boolean")
+     * ORM\Column(name="locked",type="boolean")
      */
     protected $locked = false;
     
     /**
      * @var boolean
-     * @ORM\Column(name="last_login",type="datetime")
+     * ORM\Column(name="last_login",type="datetime")
      */
     protected $lastLogin;
 

@@ -30,7 +30,7 @@ class Chat
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \BtoB\SocialNetwork\CoreBundle\Entity\User
@@ -38,7 +38,7 @@ class Chat
      * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User")
      * @ORM\JoinColumn(name="`from`",referencedColumnName="idu",nullable=false)
      */
-    private $from;
+    protected $from;
 
     /**
      * @var \BtoB\SocialNetwork\CoreBundle\Entity\User
@@ -46,36 +46,48 @@ class Chat
      * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User")
      * @ORM\JoinColumn(name="`to`",referencedColumnName="idu",nullable=false)
      */
-    private $to;
+    protected $to;
 
     /**
      * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=false)
      */
-    private $message;
+    protected $message;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="`read`", type="integer", nullable=false)
      */
-    private $read = self::STATUS_UNREAD;
+    protected $read = self::STATUS_UNREAD;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="`time`", type="datetime", nullable=false)
      */
-    private $time;
+    protected $time;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="readTime", type="datetime", nullable=true)
      */
-    private $readTime;
-
+    protected $readTime;
+    
+    /**
+     * Historiales del chat
+     * @var \BtoB\SocialNetwork\CoreBundle\Entity\ChatHistory
+     *
+     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\ChatHistory",mappedBy="chat",cascade={"persist"})
+     */
+    protected $chatHistorys;
+    
+    public function __construct() {
+        $this->chatHistorys = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -224,5 +236,22 @@ class Chat
     public function getReadTime()
     {
         return $this->readTime;
+    }
+    
+    function getChatHistorys() {
+        return $this->chatHistorys;
+    }
+
+    function addChatHistory(\BtoB\SocialNetwork\CoreBundle\Entity\ChatHistory $chatHistorys) 
+    {
+        $chatHistorys->setChat($this);
+        $this->chatHistorys->add($chatHistorys);
+    }
+
+    public function __clone() {
+        if($this->id)
+        {
+            $this->id = null;
+        }
     }
 }

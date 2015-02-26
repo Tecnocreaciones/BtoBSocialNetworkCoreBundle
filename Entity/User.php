@@ -25,12 +25,6 @@ class User extends BaseUser
     
     /**
      * @var string
-     * ORM\Column(name="email", type="string", length=255, nullable=true)
-     */
-    protected $email;
-    
-    /**
-     * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=32, nullable=true)
      */
@@ -439,18 +433,6 @@ class User extends BaseUser
      * @ORM\Column(name="lastDateChatOnLine",type="datetime",nullable=true)
      */
     private $lastDateChatOnLine;
-    
-    /**
-     * @var boolean
-     * ORM\Column(name="locked",type="boolean")
-     */
-    protected $locked = false;
-    
-    /**
-     * @var boolean
-     * ORM\Column(name="last_login",type="datetime")
-     */
-    protected $lastLogin;
 
     public function __construct() {
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection();

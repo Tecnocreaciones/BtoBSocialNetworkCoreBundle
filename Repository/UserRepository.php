@@ -156,4 +156,22 @@ class UserRepository extends EntityRepository
         }
         return $qb->getQuery()->getResult();
     }
+    
+    /**
+     * Busca los usuarios que cumplen año en una fecha
+     * @param \DateTime $date
+     * @return type
+     */
+    public function findBirthdaysOfTheDay(\DateTime $date)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $month = $date->format('m');
+        $day = $date->format('d');
+        $like = '____-'.$month.'-'.$day;
+        $qb
+            ->andWhere($qb->expr()->like('u.born',"'".$like."'" ))
+            ->setMaxResults(100)
+            ;
+        return $qb->getQuery()->getResult();
+    }
 }

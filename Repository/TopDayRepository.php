@@ -38,9 +38,13 @@ class TopDayRepository extends EntityRepository
             ->setParameter('dateEnd', $dateEnd)
             ;
         }
+        if(($user = $criteria->remove('user'))){
+            $qb->andWhere('t_p.user = :user')
+            ->setParameter('user', $user)
+            ;
+        }
         $qb
             ->orderBy('t_p.user')
-            ->addOrderBy('t_p.amountRewards')
             ->addOrderBy('t_p.amountRewards')
             ->addOrderBy('t.dateTop')
             ;

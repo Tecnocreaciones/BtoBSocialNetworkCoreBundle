@@ -58,6 +58,14 @@ class Comment
      * @ORM\Column(name="likes", type="integer", nullable=false)
      */
     private $likes = 0;
+    
+    /**
+     * Imagen del comentario
+     * 
+     * @var \BtoB\SocialNetwork\CoreBundle\Entity\Document
+     * @ORM\OneToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\Document")
+     */
+    private $imageDocument;
 
     /**
      * Get id
@@ -185,5 +193,18 @@ class Comment
     public function getMessage()
     {
         return $this->message;
+    }
+    
+    /**
+     * 
+     * @return Document
+     */
+    function getImageDocument() 
+    {
+        return $this->imageDocument;
+    }
+
+    function setImageDocument(\BtoB\SocialNetwork\CoreBundle\Entity\Document $imageDocument) {
+        $this->imageDocument = $imageDocument;
     }
 }

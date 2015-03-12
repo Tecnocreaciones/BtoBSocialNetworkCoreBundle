@@ -163,5 +163,7 @@ class Document
         $this->sufixPath = $sufixPath;
     }
 
-
+    public function __toString() {
+        return $this->getWebPath();
+    }
 }

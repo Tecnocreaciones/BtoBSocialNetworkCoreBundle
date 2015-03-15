@@ -161,6 +161,15 @@ class Message
      * @ORM\ManyToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\ResourceCDN",inversedBy="messages",cascade={"persist","remove"})
      */
     private $resourcesCDN;
+    
+    /**
+     * @var \BtoB\SocialNetwork\CoreBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User")
+     * @ORM\JoinColumn(referencedColumnName="idu")
+     */
+    private $fromUser;
+    
     /**
      * Constructor
      */
@@ -546,5 +555,19 @@ class Message
     public function getResourcesCDN()
     {
         return $this->resourcesCDN;
+    }
+    
+    /**
+     * 
+     * @return \BtoB\SocialNetwork\CoreBundle\Entity\User
+     */
+    function getFromUser() 
+    {
+        return $this->fromUser;
+    }
+
+    function setFromUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $fromUser) 
+    {
+        $this->fromUser = $fromUser;
     }
 }

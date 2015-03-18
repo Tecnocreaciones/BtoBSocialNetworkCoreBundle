@@ -82,7 +82,7 @@ class Document
     /**
      * Get file.
      *
-     * @return \BtoB\SocialNetwork\Model\UploadedFile
+     * @return \BtoB\SocialNetwork\CoreBundle\Model\UploadedFile
      */
     public function getFile()
     {
@@ -94,7 +94,7 @@ class Document
      *
      * @param UploadedFile $file
      */
-    public function setFile(\BtoB\SocialNetwork\Model\UploadedFile $file = null)
+    public function setFile(\BtoB\SocialNetwork\CoreBundle\Model\UploadedFile $file = null)
     {
         $this->file = $file;
         // check if we have an old image path

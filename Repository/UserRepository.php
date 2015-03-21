@@ -12,6 +12,22 @@ use BtoB\SocialNetwork\CoreBundle\Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * Busca un usuario por email o nombre de usuario
+     * @param type $username
+     * @return type
+     */
+    function findOneUser($username)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb
+            ->andWhere($qb->expr()->orX('u.email = :username','u.username = :username'))
+            ->setParameter('username', $username)
+            ;
+        
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+    
     function findPreHidrate($id) 
     {
         $qb = $this->createQueryBuilder('u');

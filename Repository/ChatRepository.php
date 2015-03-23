@@ -78,8 +78,12 @@ class ChatRepository extends EntityRepository
         return $this->getPaginator($qb);
     }
     
-    public function findChatsByUsers(User $userFrom,User $userTo)
+    public function findChatsByUsers(User $userFrom,User $userTo,array $parameters = array())
     {
+        $start = null;
+        if(isset($parameters['start'])){
+            $start = (int)$parameters['start'];
+        }
         $qb = $this->getQueryBuilder();
         $qb
                 ->select('c,f,t')
@@ -97,7 +101,12 @@ class ChatRepository extends EntityRepository
                 ->setParameter('friend', $userTo)
             ->orderBy('c.id','ASC')
             ;
-        
+        if($start > 0){
+            $qb
+                ->andWhere("c.id > :start")
+                ->setParameter("start",$start)
+                ;
+        }
         return $this->getPaginator($qb);
     }
     

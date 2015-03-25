@@ -45,7 +45,7 @@ class Document
     
     private $temp;
     
-    private $webPath;
+    private $relative;
             
     function getId() 
     {
@@ -61,10 +61,10 @@ class Document
 
     public function getWebPath()
     {
-        $this->webPath = null === $this->path
+        $this->relative = null === $this->path
             ? null
             : $this->getUploadDir().'/'.$this->path;
-        return $this->webPath;
+        return $this->relative;
     }
 
     protected function getUploadRootDir()

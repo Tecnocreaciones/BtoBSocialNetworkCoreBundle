@@ -4,6 +4,6 @@ BtoB\SocialNetwork\CoreBundle\Entity\Document:
         id:
             expose: true
             groups: [id]
-        webPath:
+        relative:
             expose: true
             groups: [api_list]

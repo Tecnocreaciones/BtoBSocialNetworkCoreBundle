@@ -45,6 +45,8 @@ class Document
     
     private $temp;
     
+    private $webPath;
+            
     function getId() 
     {
         return $this->id;
@@ -59,14 +61,19 @@ class Document
 
     public function getWebPath()
     {
-        return null === $this->path
+        $this->webPath = null === $this->path
             ? null
             : $this->getUploadDir().'/'.$this->path;
+        return $this->webPath;
     }
 
     protected function getUploadRootDir()
     {
-        $base = \BtoB\SocialNetwork\ContainerAware::getInstance()->getParameter('kernel.root_dir');
+        if(class_exists("BtoB\SocialNetwork\ContainerAware")){
+            $base = \BtoB\SocialNetwork\ContainerAware::getInstance()->getParameter('kernel.root_dir');
+        }else{
+            $base = __DIR__."/../../../../../../../web/";
+        }
         // the absolute directory path where uploaded
         // documents should be saved
         return $base.$this->getUploadDir();
@@ -94,7 +101,7 @@ class Document
      *
      * @param UploadedFile $file
      */
-    public function setFile(\BtoB\SocialNetwork\CoreBundle\Model\UploadedFile $file = null)
+    public function setFile($file = null)
     {
         $this->file = $file;
         // check if we have an old image path
@@ -144,6 +151,7 @@ class Document
             $this->temp = null;
         }
         $this->file = null;
+        $this->getWebPath();
     }
 
     /**
@@ -152,15 +160,22 @@ class Document
     public function removeUpload()
     {
         $file = $this->getAbsolutePath();
-        if ($file) {
-            unlink($file);
+        if (file_exists($file)) {
+            @unlink($file);
         }
     }
-    
     
     function setSufixPath($sufixPath) 
     {
         $this->sufixPath = $sufixPath;
+    }
+    
+    /**
+     * @ORM\PostLoad()
+     */
+    public function postLoad()
+    {
+        $this->getWebPath();
     }
 
     public function __toString() {

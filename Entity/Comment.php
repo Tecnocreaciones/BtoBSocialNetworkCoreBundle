@@ -63,7 +63,7 @@ class Comment
      * Imagen del comentario
      * 
      * @var \BtoB\SocialNetwork\CoreBundle\Entity\Document
-     * @ORM\OneToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\Document")
+     * @ORM\OneToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\Document",cascade={"persist","remove"})
      */
     private $imageDocument;
 

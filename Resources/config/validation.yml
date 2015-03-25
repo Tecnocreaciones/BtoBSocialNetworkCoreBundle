@@ -19,3 +19,8 @@ BtoB\SocialNetwork\CoreBundle\Entity\Relation:
     properties:
         status:
             - NotBlank: ~
+            
+BtoB\SocialNetwork\CoreBundle\Entity\Comment:
+    properties:
+        commentText:
+            - NotBlank: ~

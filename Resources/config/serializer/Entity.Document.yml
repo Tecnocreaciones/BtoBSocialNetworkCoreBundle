@@ -1,0 +1,9 @@
+BtoB\SocialNetwork\CoreBundle\Entity\Document:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            groups: [id]
+        webPath:
+            expose: true
+            groups: [api_list]

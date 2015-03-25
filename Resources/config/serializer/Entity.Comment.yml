@@ -19,3 +19,6 @@ BtoB\SocialNetwork\CoreBundle\Entity\Comment:
         likes:
             expose: true
             groups: [api_list]
+        imageDocument:
+            expose: true
+            groups: [api_list]

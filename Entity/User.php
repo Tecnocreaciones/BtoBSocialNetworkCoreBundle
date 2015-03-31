@@ -328,11 +328,18 @@ class User extends BaseUser
      * Usuario que te refirio a BtoB
      * 
      * @var User
-     * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User",inversedBy="myReferrals")
      * @ORM\JoinColumn(name="referredBy_id",referencedColumnName="idu")
      */
     protected $referredBy;
     
+    /**
+     * Mis referidos
+     * @var User
+     * @ORM\OneToMany(targetEntity="BtoB\SocialNetwork\CoreBundle\Entity\User",mappedBy="referredBy")
+     */
+    protected $myReferrals;
+
     /**
      * Recursos en CDN del Perfil
      * 
@@ -439,6 +446,7 @@ class User extends BaseUser
         $this->subscribers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->leaders = new \Doctrine\Common\Collections\ArrayCollection();
         $this->likes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->myReferrals = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

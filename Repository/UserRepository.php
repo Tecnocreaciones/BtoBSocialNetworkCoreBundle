@@ -42,6 +42,39 @@ class UserRepository extends EntityRepository
     }
     
     /**
+     * Retorna los
+     * @param array $criteria
+     * @return type
+     */
+    public function findUserTopByReferrals(array $criteria = array())
+    {
+        $qb = $this->createQueryBuilder("u");
+        $qb
+//           ->addSelect("u as user")
+//           ->addSelect("u_r")
+           ->addSelect($qb->expr()->count('u_r.id')." countReferrals")
+           ->innerJoin("u.myReferrals", "u_r")
+           ->groupBy("u.id") 
+           ->orderBy("countReferrals","DESC")
+        ;
+        $criteria = new \Doctrine\Common\Collections\ArrayCollection($criteria);
+        if(($dateStart = $criteria->remove("dateStart"))){
+            $qb
+                ->andWhere("u.date >= :dateStart")
+                ->setParameter("dateStart", $dateStart)
+            ;
+        }
+        
+        if(($dateEnd = $criteria->remove("dateEnd"))){
+            $qb
+                ->andWhere("u.date <= :dateEnd")
+                ->setParameter("dateEnd", $dateEnd)
+            ;
+        }
+        return $this->getPaginator($qb);
+    }
+    
+    /**
      * Busca un usuario con informacion extra
      * @param type $leaderId
      * @param \BtoB\SocialNetwork\CoreBundle\Entity\User $subscriber

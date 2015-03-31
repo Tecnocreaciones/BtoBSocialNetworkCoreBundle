@@ -315,6 +315,25 @@ class MessageRepository extends EntityRepository
         return $qb->getQuery()->getOneOrNullResult();
     }
     
+    /**
+     * Cuenta los mensajes publicados de un usuario
+     * @param type $user
+     * @return type
+     */
+    public function countMessagesByUser($user)
+    {
+        $qb = $this->createQueryBuilder("m");
+        $qb
+            ->addSelect($qb->expr()->count("m.id")." countMessages")
+            ->andWhere("m.user = :user")
+            ->innerJoin("m.user", "m_u")
+            ->groupBy("m_u.id")
+            ->setParameter("user", $user)
+        ;
+        
+        return $qb->getQuery()->getArrayResult();
+    }
+    
     protected function getAlias() {
         return 'm';
     }

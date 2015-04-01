@@ -357,8 +357,35 @@ class Settings
      */
     private $ad7;
 
+    /**
+     * Valor de los rewards
+     * @var float
+     * @ORM\Column(name="value_reward",type="float")
+     */
+    private $valueReward;
 
+    /**
+     * Cantidad de rewards a regalar en su primer post
+     * @var integer
+     * @ORM\Column(name="new_user_gift_reward",type="integer")
+     */
+    private $newUserGiftReward;
 
+    /**
+     * Fecha valida de donde se regalaran rewards en publicaciones
+     * @var integer
+     * @ORM\Column(name="date_new_user_gift_reward",type="date")
+     */
+    private $dateNewUserGiftReward;
+    
+    public function getParameter($name,$default = null)
+    {
+        if(isset($this->$name)){
+            return $this->$name;
+        }
+        return $default;
+    }
+    
     /**
      * Get id
      *

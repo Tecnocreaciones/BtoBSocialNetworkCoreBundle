@@ -60,14 +60,14 @@ class UserRepository extends EntityRepository
         $criteria = new \Doctrine\Common\Collections\ArrayCollection($criteria);
         if(($dateStart = $criteria->remove("dateStart"))){
             $qb
-                ->andWhere("u.date >= :dateStart")
-                ->setParameter("dateStart", $dateStart)
+                ->andWhere("u_r.date >= :dateStart")
+                ->setParameter("dateStart", '2015-04-01')
             ;
         }
         
         if(($dateEnd = $criteria->remove("dateEnd"))){
             $qb
-                ->andWhere("u.date <= :dateEnd")
+                ->andWhere("u_r.date <= :dateEnd")
                 ->setParameter("dateEnd", $dateEnd)
             ;
         }

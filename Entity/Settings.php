@@ -377,6 +377,13 @@ class Settings
      * @ORM\Column(name="date_new_user_gift_reward",type="date")
      */
     private $dateNewUserGiftReward;
+
+    /**
+     * Cantidad de rewards a regalar en las publicaciones por cada invitado.
+     * @var integer
+     * @ORM\Column(name="gift_reward_by_invited",type="integer")
+     */
+    private $giftRewardByInvited;
     
     public function getParameter($name,$default = null)
     {

@@ -27,6 +27,7 @@ class MessageRepository extends EntityRepository
             ;
         return $qb->getQuery()->getOneOrNullResult();
     }
+    
     public function getMessagesByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
     {
         $qb = $this->createQueryBuilder('m');
@@ -35,6 +36,18 @@ class MessageRepository extends EntityRepository
            ->setParameter('user', $user)
             ;
         return $qb->getQuery()->getResult();
+    }
+    
+    public function getLastMessageByUser(\BtoB\SocialNetwork\CoreBundle\Entity\User $user)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->select('m')
+           ->where('m.user = :user')
+           ->setParameter('user', $user)
+           ->orderBy("m.id","DESC")
+           ->setMaxResults(1)
+            ;
+        return $qb->getQuery()->getOneOrNullResult();
     }
     
     /**

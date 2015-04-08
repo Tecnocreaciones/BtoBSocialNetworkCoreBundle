@@ -404,7 +404,12 @@ class Message
             self::TYPE_VISITED => self::TYPE_VISITED,
         );
     }
-
+    
+    public function addLikes($quantity)
+    {
+        $this->likesCount = $this->likesCount + $quantity;
+    }
+    
     /**
      * Set likesCount
      *

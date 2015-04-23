@@ -236,7 +236,7 @@ class MessageRepository extends EntityRepository
                 ->addGroupBy('m_u.id')
                 ->addOrderBy('countRewards','DESC')
                 ->addOrderBy('m.createdAt','DESC')
-                ->andHaving('countRewards >= 10')
+                ->andHaving('countRewards >= 4')
                 ;
         
         $sorting = new \Doctrine\Common\Collections\ArrayCollection($sorting);

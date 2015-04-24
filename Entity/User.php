@@ -440,6 +440,13 @@ class User extends BaseUser
      * @ORM\Column(name="lastDateChatOnLine",type="datetime",nullable=true)
      */
     private $lastDateChatOnLine;
+    
+    /**
+     * Identificador del facebook
+     * @var integer
+     * @ORM\Column(name="facebook_id",type="string",nullable=true)
+     */
+    private $facebookId;
 
     public function __construct() {
         $this->messages = new \Doctrine\Common\Collections\ArrayCollection();
@@ -1805,5 +1812,14 @@ class User extends BaseUser
     public function getLastDateChatOnLine()
     {
         return $this->lastDateChatOnLine;
+    }
+    function getFacebookId() {
+        return $this->facebookId;
+    }
+
+    function setFacebookId($facebookId) {
+        $this->facebookId = $facebookId;
+        
+        return $this;
     }
 }

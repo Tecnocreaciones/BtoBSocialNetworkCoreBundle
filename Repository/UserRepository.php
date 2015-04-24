@@ -21,7 +21,7 @@ class UserRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('u');
         $qb
-            ->andWhere($qb->expr()->orX('u.email = :username','u.username = :username'))
+            ->andWhere($qb->expr()->orX('u.email = :username','u.username = :username',"u.facebookId = :username"))
             ->setParameter('username', $username)
             ;
         

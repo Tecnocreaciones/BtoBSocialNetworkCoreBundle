@@ -61,7 +61,7 @@ class UserRepository extends EntityRepository
         if(($dateStart = $criteria->remove("dateStart"))){
             $qb
                 ->andWhere("u_r.date >= :dateStart")
-                ->setParameter("dateStart", '2015-04-01')
+                ->setParameter("dateStart",$dateStart)
             ;
         }
         
@@ -71,6 +71,7 @@ class UserRepository extends EntityRepository
                 ->setParameter("dateEnd", $dateEnd)
             ;
         }
+        
         return $this->getPaginator($qb);
     }
     
